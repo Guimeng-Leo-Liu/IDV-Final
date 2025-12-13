@@ -1870,7 +1870,7 @@
         barData.forEach((d, i) => {
           const x = toX(i) - barWidth / 2;
           const yPrev = toY(d.prev);
-          const yAdd = toY(d.add);
+          const yAdd = toY(d.prev + d.add);
           const yBase = toY(0);
 
           if (d.prev > 0) {
@@ -1896,7 +1896,7 @@
             addRect.setAttribute('height', toY(d.prev) - yAdd);
             addRect.setAttribute('fill', '#f68b4f');
             addRect.setAttribute('opacity', '0.9');
-            addRect.setAttribute('data-tip', `${d.year}: Our survey only (${d.prev+d.add})`);
+            addRect.setAttribute('data-tip', `${d.year}: Our survey only (${d.add})`);
             addRect.setAttribute('data-series', 'add');
             addRect.classList.add('bar-seg');
             barSvg.appendChild(addRect);
