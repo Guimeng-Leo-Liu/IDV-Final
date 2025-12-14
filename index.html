@@ -158,7 +158,10 @@
     html, body {
       height: 100%;
       scroll-behavior: smooth;
-      scroll-snap-type: y mandatory;
+      scroll-snap-type: y proximity;
+    }
+    html.no-snap, body.no-snap {
+      scroll-snap-type: none;
     }
 
     .hero,
@@ -372,6 +375,16 @@
 </head>
 <body>
 
+<script>
+  (function() {
+    const ua = navigator.userAgent || '';
+    if (/Windows/i.test(ua)) {
+      document.documentElement.classList.add('no-snap');
+      document.body.classList.add('no-snap');
+    }
+  })();
+</script>
+
 
 <section class="hero">
   <div class="hero-body">
@@ -381,6 +394,7 @@
           <h1 class="title is-1 publication-title">A Survey on Generative Modeling
           with Limited Data, Few Shots, and Zero Shot
           </h1>
+          <p class="subtitle is-4" style="margin-top: 0.4rem;">TMLR 2025</p>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://miladabd.github.io/">Milad Abdollahzadeh</a><sup>*</sup>,
